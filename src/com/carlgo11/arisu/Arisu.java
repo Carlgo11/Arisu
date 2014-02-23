@@ -5,7 +5,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
-import static java.lang.Thread.sleep;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
@@ -51,6 +50,7 @@ public class Arisu extends PircBot {
         cmds.add(new SayCommand());
         cmds.add(new ActCommand());
         cmds.add(new OpCommand());
+        cmds.add(new ShellCommand());
 
     }
 

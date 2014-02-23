@@ -3,8 +3,6 @@ package com.carlgo11.arisu.internalcommands;
 import com.carlgo11.arisu.Arisu;
 import com.carlgo11.arisu.Commands;
 import static java.lang.Thread.sleep;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class ActCommand implements Commands {
 

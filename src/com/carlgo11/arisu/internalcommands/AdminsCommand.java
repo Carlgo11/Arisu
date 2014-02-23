@@ -3,7 +3,7 @@ package com.carlgo11.arisu.internalcommands;
 import com.carlgo11.arisu.Arisu;
 import com.carlgo11.arisu.Commands;
 
-public class AdminsCommand implements Commands{
+public class AdminsCommand implements Commands {
 
     @Override
     public String getCommandName() {
