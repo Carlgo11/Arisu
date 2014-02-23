@@ -9,7 +9,8 @@ public class Main {
         Arisu bot = new Arisu();
         
         // Enable debugging output.
-        bot.setVerbose(true);        
+        bot.setVerbose(true);     
+        bot.connect("irc.kamino.in");
 
         
     }

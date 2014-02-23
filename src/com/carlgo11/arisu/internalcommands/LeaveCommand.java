@@ -29,7 +29,7 @@ public class LeaveCommand implements Commands {
             }
         } else if (args.length == 2) {
             if (bot.isAdmin(sender) || bot.isMod(sender)) {
-                if (bot.inChannel(channel)) {
+                if (bot.inChannel(args[1])) {
                     bot.partChannel(args[1].toString(), "Leaving... (Requested by " + sender + ")");
                     try {
                         bot.removeChannel(args[1].toString(), sender);

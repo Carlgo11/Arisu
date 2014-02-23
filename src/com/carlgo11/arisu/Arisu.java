@@ -25,15 +25,16 @@ public class Arisu extends PircBot {
         } catch (IOException ex) {
             System.err.println("Error loading config file: config.properties");
             System.exit(0);
+            
         }
 
         try {
             Startup.onStartup(admins, this, mods);
             this.setName(config.getProperty("nick", "Arisu"));
-            this.connect(config.getProperty("server"));
-
+            
         } catch (Exception ex) {
-            System.out.println(ex);
+            System.out.println("Startup failed.\n"+ex);
+            System.exit(0);
         }
         String[] chans;
         for (int i = 0; i < channels.size(); i++) {
@@ -53,6 +54,7 @@ public class Arisu extends PircBot {
         cmds.add(new ShutdownCommand());
         cmds.add(new SayCommand());
         cmds.add(new ActCommand());
+        cmds.add(new OpCommand());
 
     }
 
@@ -83,6 +85,40 @@ public class Arisu extends PircBot {
             return false;
         }
     }
+    public boolean isOp(String sender, String channel){
+       User users[] = getUsers(channel);
+        User u = null;
+        for (User user : users) {
+            String us = user.getNick().replace("~", "");
+            System.out.println("user: "+us);
+            if (sender.equals(us)) {
+                u = user;
+                break;
+            }
+        }
+
+        if(u.isOp() || u.getNick().startsWith("~")){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    public boolean isVoice(String user, String channel){
+        User users[] = getUsers(channel);
+        User u = null;
+        for (User usa : users) {
+            if (user.equals(usa.getNick())) {
+                u = usa;
+                break;
+            }
+        }
+        if(u.hasVoice()){
+            return true;
+        }else{
+            return false;
+        }
+        
+    }
 
     public void appendChannel(String channel, String sender) throws IOException {
         File file = new File("channels.txt");
@@ -90,7 +126,6 @@ public class Arisu extends PircBot {
         channels.add(channel.toLowerCase());
         StringBuilder f = new StringBuilder();
         for(int i = 0; i < channels.size();i++){
-            System.out.println("i:"+i+"\tchan:"+channels.size());
             f.append(channels.get(i).toString());
             f.append("\n");
         }
@@ -114,11 +149,9 @@ public class Arisu extends PircBot {
             f.append("\n");
             }
         }
-        System.out.println("f:"+f.toString());
         d.flush();
         d.write(f.toString());
         d.close();
-        this.joinChannel(channel);
     }
 
     public void onDisconnect(String target, String killer) {
@@ -156,8 +189,14 @@ public class Arisu extends PircBot {
                 return false;
             }
         }
-
         return false;
-
+    }
+    public void onDisable(String sender){
+        for(int i = 0; i < channels.size(); i++){
+            this.partChannel(channels.get(i), config.getProperty("disconnect-message")+"(Requested by "+sender+")");
+        }
+        this.disconnect();
+        System.out.println("=============\tBot disabled by "+sender+"\t=============");
+        System.exit(0);
     }
 }

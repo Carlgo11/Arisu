@@ -6,11 +6,11 @@ import static java.lang.Thread.sleep;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class ActCommand implements Commands{
+public class ActCommand implements Commands {
 
     @Override
     public String getCommandName() {
-       return "act";
+        return "act";
     }
 
     @Override
@@ -27,25 +27,24 @@ public class ActCommand implements Commands{
                     }
                     bot.sendAction(channel, outp.toString());
                 } else {
-                    boolean inchnl = true;
-                    if (!bot.inChannel(args[1])) {
-                        bot.joinChannel(args[1]);
-                        inchnl = false;
-                    }
                     StringBuilder outp = new StringBuilder();
                     for (int i = 2; i < args.length; i++) {
                         outp.append(args[i]);
                         outp.append(" ");
                     }
+                    if (!bot.inChannel(args[1])) {
+                        bot.joinChannel(args[1]);
 
-                    bot.sendAction(args[1], outp.toString());
-                    if (!inchnl) {
+                        bot.sendAction(args[1], outp.toString());
+
                         try {
                             sleep(10l);
-                            bot.partChannel(args[1], "Action request by "+sender+".");
+                            bot.partChannel(args[1], "Action request by " + sender + ".");
                         } catch (InterruptedException ex) {
                             bot.sendError(sender, ex.toString());
                         }
+                    } else {
+                        bot.sendAction(args[1], outp.toString());
                     }
                 }
             }
