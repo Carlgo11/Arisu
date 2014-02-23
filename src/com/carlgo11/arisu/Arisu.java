@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import static java.lang.Thread.sleep;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
@@ -25,22 +26,17 @@ public class Arisu extends PircBot {
         } catch (IOException ex) {
             System.err.println("Error loading config file: config.properties");
             System.exit(0);
-            
         }
 
         try {
+            
             Startup.onStartup(admins, this, mods);
             this.setName(config.getProperty("nick", "Arisu"));
-            
         } catch (Exception ex) {
-            System.out.println("Startup failed.\n"+ex);
+            System.out.println("Startup failed.\n" + ex);
             System.exit(0);
         }
-        String[] chans;
-        for (int i = 0; i < channels.size(); i++) {
-            this.joinChannel(channels.get(i).toString());
-        }
-        
+
         cmds = new ArrayList<Commands>();
 
         cmds.add(new AdminsCommand());
@@ -85,25 +81,27 @@ public class Arisu extends PircBot {
             return false;
         }
     }
-    public boolean isOp(String sender, String channel){
-       User users[] = getUsers(channel);
+
+    public boolean isOp(String sender, String channel) {
+        User users[] = getUsers(channel);
         User u = null;
         for (User user : users) {
             String us = user.getNick().replace("~", "");
-            System.out.println("user: "+us);
+            System.out.println("user: " + us);
             if (sender.equals(us)) {
                 u = user;
                 break;
             }
         }
 
-        if(u.isOp() || u.getNick().startsWith("~")){
+        if (u.isOp() || u.getNick().startsWith("~")) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
-    public boolean isVoice(String user, String channel){
+
+    public boolean isVoice(String user, String channel) {
         User users[] = getUsers(channel);
         User u = null;
         for (User usa : users) {
@@ -112,12 +110,12 @@ public class Arisu extends PircBot {
                 break;
             }
         }
-        if(u.hasVoice()){
+        if (u.hasVoice()) {
             return true;
-        }else{
+        } else {
             return false;
         }
-        
+
     }
 
     public void appendChannel(String channel, String sender) throws IOException {
@@ -125,11 +123,11 @@ public class Arisu extends PircBot {
         FileWriter d = new FileWriter(file);
         channels.add(channel.toLowerCase());
         StringBuilder f = new StringBuilder();
-        for(int i = 0; i < channels.size();i++){
+        for (int i = 0; i < channels.size(); i++) {
             f.append(channels.get(i).toString());
             f.append("\n");
         }
-        System.out.println("f:"+f.toString());
+        System.out.println("f:" + f.toString());
         d.flush();
         d.write(f.toString());
         d.close();
@@ -143,10 +141,10 @@ public class Arisu extends PircBot {
         FileWriter d = new FileWriter(file);
         channels.remove(channel);
         StringBuilder f = new StringBuilder();
-        for(int i = 0; i < channels.size();i++){
-            if(!channels.get(i).equalsIgnoreCase(channel)){
-            f.append(channels.get(i).toString().toLowerCase());
-            f.append("\n");
+        for (int i = 0; i < channels.size(); i++) {
+            if (!channels.get(i).equalsIgnoreCase(channel)) {
+                f.append(channels.get(i).toString().toLowerCase());
+                f.append("\n");
             }
         }
         d.flush();
@@ -191,12 +189,13 @@ public class Arisu extends PircBot {
         }
         return false;
     }
-    public void onDisable(String sender){
-        for(int i = 0; i < channels.size(); i++){
-            this.partChannel(channels.get(i), config.getProperty("disconnect-message")+"(Requested by "+sender+")");
+
+    public void onDisable(String sender) {
+        for (int i = 0; i < channels.size(); i++) {
+            this.partChannel(channels.get(i), config.getProperty("disconnect-message") + "(Requested by " + sender + ")");
         }
         this.disconnect();
-        System.out.println("=============\tBot disabled by "+sender+"\t=============");
+        System.out.println("=============\tBot disabled by " + sender + "\t=============");
         System.exit(0);
     }
 }
