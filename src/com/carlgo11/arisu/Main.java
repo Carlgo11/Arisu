@@ -9,6 +9,7 @@ public class Main {
         Arisu bot = new Arisu();
         bot.connect("irc.kamino.in");
         System.out.println("connected to "+bot.getServer());
+        //bot.identify(""); //NameServ pass
         for (int i = 0; i < bot.channels.size(); i++) {
             bot.joinChannel(bot.channels.get(i).toString());
             System.out.println("Joining " + bot.channels.get(i).toString());

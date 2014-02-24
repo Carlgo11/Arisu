@@ -12,10 +12,11 @@ import org.jibble.pircbot.*;
 
 public class Arisu extends PircBot {
 
-    public String commandPrefix = "?";
+    public String commandprefix = "?";
     public ArrayList<String> admins = new ArrayList<String>();
     public ArrayList<String> mods = new ArrayList<String>();
     public ArrayList<String> channels = new ArrayList<String>();
+    public ArrayList<String> log = new ArrayList<String>();
     public Properties config = new Properties();
     private final List<Commands> cmds;
 
@@ -23,14 +24,14 @@ public class Arisu extends PircBot {
         try {
             config.load(new FileInputStream("config.properties"));
         } catch (IOException ex) {
-            System.err.println("Error loading config file: config.properties");
+            System.err.println("Error loading config.properties.\n" + ex);
             System.exit(0);
         }
 
         try {
-            
             Startup.onStartup(admins, this, mods);
             this.setName(config.getProperty("nick", "Arisu"));
+            this.setLogin(config.getProperty("realname", "Arisu"));
         } catch (Exception ex) {
             System.out.println("Startup failed.\n" + ex);
             System.exit(0);
@@ -39,6 +40,7 @@ public class Arisu extends PircBot {
         cmds = new ArrayList<Commands>();
 
         cmds.add(new AdminsCommand());
+        cmds.add(new ModsCommand());
         cmds.add(new BanCommand());
         cmds.add(new HelloCommand());
         cmds.add(new AdminsCommand());
@@ -51,15 +53,14 @@ public class Arisu extends PircBot {
         cmds.add(new ActCommand());
         cmds.add(new OpCommand());
         cmds.add(new ShellCommand());
-
     }
 
     public void sendError(String target, String reason) {
-        this.sendMessage(target, Colors.RED + "[Error] " + Colors.WHITE + reason);
+        this.sendMessage(target, Colors.RED + "[Error] " + Colors.removeColors(reason));
     }
 
-    public void sendUsage(String target, String reason) {
-        sendError(target, "Usage:" + reason);
+    public void sendUsage(String target, String usage) {
+        sendError(target, "Usage: " + commandprefix + usage);
     }
 
     public void badperms(String target) {
@@ -160,15 +161,36 @@ public class Arisu extends PircBot {
         String[] args = msg.split(" ");
         String cleancmd = args[0];
 
-        if (msg.startsWith(commandPrefix)) {
-            String message = msg.replace(commandPrefix, "").toLowerCase();
+        if (msg.startsWith(commandprefix)) {
+            String message = msg.replace(commandprefix, "").toLowerCase();
             for (Commands command : cmds) {
                 if (message.startsWith(command.getCommandName())) {
+                    Startup.savelog(this, channel, sender, msg);
                     command.handleMessage(this, channel, sender, message.replace(command.getCommandName(), "").trim(), args);
                 }
             }
         }
 
+    }
+
+    public void onPrivateMessage(String sender, String login, String hostname, String msg) {
+        String[] args = msg.split(" ");
+        String cleancmd = args[0];
+        String message = pmmsg(msg, commandprefix);
+
+        for (Commands command : cmds) {
+            if (message.startsWith(command.getCommandName())) {
+                command.handleMessage(this, sender, sender, message.replace(command.getCommandName(), "").trim(), args);
+            }
+        }
+    }
+
+    String pmmsg(String msg, String prefix) {
+        if (msg.startsWith(commandprefix)) {
+            return msg.replace(commandprefix, "").toLowerCase().trim();
+        } else {
+            return msg;
+        }
     }
 
     public void onInvite(String targetNick, String sender, String sourceLogin, String sourceHostname, String channel) {

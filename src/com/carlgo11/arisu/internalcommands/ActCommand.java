@@ -37,7 +37,7 @@ public class ActCommand implements Commands {
 
                         try {
                             sleep(10l);
-                            bot.partChannel(args[1], "Action request by " + sender + ".");
+                            bot.partChannel(args[1], "Act command requested by " + sender + ".");
                         } catch (InterruptedException ex) {
                             bot.sendError(sender, ex.toString());
                         }

@@ -1,7 +1,9 @@
 #################
 ## Eclipse
 #################
-
+src/logs
+nbproject
+logs
 *.pydevproject
 .project
 .metadata

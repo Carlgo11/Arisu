@@ -42,7 +42,7 @@ public class SayCommand implements Commands {
                     if (!inchnl) {
                         try {
                             sleep(10l);
-                            bot.partChannel(args[1], "Say request by "+sender+".");
+                            bot.partChannel(args[1], "Say command requested by "+sender+".");
                         } catch (InterruptedException ex) {
                             bot.sendError(sender, ex.toString());
                         }
