@@ -13,7 +13,13 @@ public class ShutdownCommand implements Commands{
     @Override
     public void handleMessage(Arisu bot, String channel, String sender, String msg, String[] args) {
         if (bot.admins.contains(sender)) {
-                    bot.onDisable(sender);
+            if(args.length == 1){
+                    bot.onDisable(sender,null);
+            }else if(args.length > 1){
+                 bot.onDisable(sender,msg);
+            }else{
+                    bot.sendUsage(sender, "shutdown (reason)");
+                    }
                 } else {
                     bot.badperms(sender);
                 }

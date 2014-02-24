@@ -5,9 +5,12 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import static java.lang.Thread.sleep;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.jibble.pircbot.*;
 
 public class Arisu extends PircBot {
@@ -56,7 +59,7 @@ public class Arisu extends PircBot {
     }
 
     public void sendError(String target, String reason) {
-        this.sendMessage(target, Colors.RED + "[Error] " + Colors.removeColors(reason));
+        this.sendMessage(target, Colors.RED + "[Error] " + Colors.NORMAL + reason);
     }
 
     public void sendUsage(String target, String usage) {
@@ -212,11 +215,16 @@ public class Arisu extends PircBot {
         return false;
     }
 
-    public void onDisable(String sender) {
-        for (int i = 0; i < channels.size(); i++) {
-            this.partChannel(channels.get(i), config.getProperty("disconnect-message") + "(Requested by " + sender + ")");
+    public void onDisable(String sender, String reason) {
+        for (int i = 0; i <= channels.size(); i++) {
+            if (i != channels.size()) {
+                if (reason == null) {
+                    this.partChannel(channels.get(i), config.getProperty("disconnect-message") + "(Requested by " + sender + ")");
+                } else {
+                    this.partChannel(channels.get(i), config.getProperty("disconnect-message") + " (Reason:" + reason + "(Requested by " + sender + "))");
+                }
+            }
         }
-        this.disconnect();
         System.out.println("=============\tBot disabled by " + sender + "\t=============");
         System.exit(0);
     }

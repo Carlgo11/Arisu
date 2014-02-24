@@ -101,7 +101,6 @@ public class Startup {
             for (int i = 0; i < ar.log.size(); i++) {
                 f.append(ar.log.get(i).toString());
                 f.append("\n");
-                System.out.println(ar.log.get(i).toString());
             }
             f.append(msg);
             f.append("\n");
