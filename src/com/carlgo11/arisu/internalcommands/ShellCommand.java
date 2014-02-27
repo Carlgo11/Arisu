@@ -14,7 +14,7 @@ public class ShellCommand implements Commands {
 
     @Override
     public void handleMessage(Arisu bot, String channel, String sender, String msg, String[] args) {
-        if(sender.equalsIgnoreCase("carlgo11")){
+        if(bot.isAuthed(sender)){
             StringBuilder al = new StringBuilder();
             for(int i = 1; i < args.length; i++){
                 al.append(args[i]);
@@ -22,7 +22,7 @@ public class ShellCommand implements Commands {
             }
             bot.sendMessage(channel, shell(al.toString()));
         }else{
-            bot.badperms(sender);
+            bot.needauth(sender);
         }
     }
     

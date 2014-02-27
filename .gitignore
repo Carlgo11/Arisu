@@ -2,6 +2,7 @@
 ## Eclipse
 #################
 src/logs
+src/com/carlgo11/arisu/AuthSecret.java
 nbproject
 logs
 *.pydevproject

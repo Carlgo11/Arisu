@@ -2,29 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/Carl/Documents/GitHub/Arisu/src/com/carlgo11/arisu/internalcommands/AdminsCommand.java</file>
-            <file>file:/C:/Users/Carl/Documents/GitHub/Arisu/src/com/carlgo11/arisu/internalcommands/LeaveCommand.java</file>
-            <file>file:/C:/Users/Carl/Documents/GitHub/Arisu/src/com/carlgo11/arisu/Startup.java</file>
-            <file>file:/C:/Users/Carl/Documents/GitHub/Arisu/src/com/carlgo11/arisu/internalcommands/OpCommand.java</file>
-            <file>file:/C:/Users/Carl/Documents/GitHub/Arisu/src/com/carlgo11/arisu/internalcommands/BanCommand.java</file>
-            <file>file:/C:/Users/Carl/Documents/GitHub/Arisu/src/admins.txt</file>
-            <file>file:/C:/Users/Carl/Documents/GitHub/Arisu/src/com/carlgo11/arisu/internalcommands/ShellCommand.java</file>
-            <file>file:/C:/Users/Carl/Documents/GitHub/Arisu/src/com/carlgo11/arisu/internalcommands/HelloCommand.java</file>
-            <file>file:/C:/Users/Carl/Documents/GitHub/Arisu/src/com/carlgo11/arisu/Settings.java</file>
-            <file>jar:file:/C:/Users/Carl/Documents/GitHub/Arisu/pircbot.jar!/org/jibble/pircbot/PircBot.java</file>
-            <file>file:/C:/Users/Carl/Documents/GitHub/Arisu/src/com/carlgo11/arisu/internalcommands/InviteCommand.java</file>
-            <file>file:/C:/Users/Carl/Documents/GitHub/Arisu/src/com/carlgo11/arisu/Arisu.java</file>
-            <file>file:/C:/Users/Carl/Documents/GitHub/Arisu/src/mods.txt</file>
-            <file>file:/C:/Users/Carl/Documents/GitHub/Arisu/src/com/carlgo11/arisu/Commands.java</file>
-            <file>file:/C:/Users/Carl/Documents/GitHub/Arisu/src/com/carlgo11/arisu/internalcommands/ShutdownCommand.java</file>
-            <file>file:/C:/Users/Carl/Documents/GitHub/Arisu/src/com/carlgo11/arisu/internalcommands/SayCommand.java</file>
-            <file>file:/C:/Users/Carl/Documents/GitHub/Arisu/src/channels.txt</file>
-            <file>file:/C:/Users/Carl/Documents/GitHub/Arisu/src/com/carlgo11/arisu/internalcommands/Adduser.java</file>
-            <file>file:/C:/Users/Carl/Documents/GitHub/Arisu/src/com/carlgo11/arisu/internalcommands/ActCommand.java</file>
-            <file>file:/C:/Users/Carl/Documents/GitHub/Arisu/src/com/carlgo11/arisu/internalcommands/JoinCommand.java</file>
-            <file>file:/C:/Users/Carl/Documents/GitHub/Arisu/src/com/carlgo11/arisu/Main.java</file>
-            <file>file:/C:/Users/Carl/Documents/GitHub/Arisu/src/config.properties</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

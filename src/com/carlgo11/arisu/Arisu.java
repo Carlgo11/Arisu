@@ -5,12 +5,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
-import static java.lang.Thread.sleep;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.jibble.pircbot.*;
 
 public class Arisu extends PircBot {
@@ -20,6 +17,7 @@ public class Arisu extends PircBot {
     public ArrayList<String> mods = new ArrayList<String>();
     public ArrayList<String> channels = new ArrayList<String>();
     public ArrayList<String> log = new ArrayList<String>();
+    public ArrayList<String> authed = new ArrayList<String>();
     public Properties config = new Properties();
     private final List<Commands> cmds;
 
@@ -56,13 +54,19 @@ public class Arisu extends PircBot {
         cmds.add(new ActCommand());
         cmds.add(new OpCommand());
         cmds.add(new ShellCommand());
+        cmds.add(new AuthCommand());
     }
 
     public void sendError(String target, String reason) {
         this.sendMessage(target, Colors.RED + "[Error] " + Colors.NORMAL + reason);
     }
+    public void needauth(String user){
+        sendError(user, "You don't have permission to perform that action. You'll need to authorize first. ?auth (code)");
+    }
 
     public void sendUsage(String target, String usage) {
+        sendMessage(target, "<> = Required");
+        sendMessage(target, "() = Optional");
         sendError(target, "Usage: " + commandprefix + usage);
     }
 
@@ -213,6 +217,14 @@ public class Arisu extends PircBot {
             }
         }
         return false;
+    }
+
+    public boolean isAuthed(String user) {
+        if (authed.contains(user)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public void onDisable(String sender, String reason) {
