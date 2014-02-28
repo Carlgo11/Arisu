@@ -3,3 +3,16 @@
 ?auth 572544
 ?admins
 ?op
+?shutdown
+?auth 415586
+?shutdown bye
+?shutdown test
+?auth 405254
+?auth 404254
+?shutdown k bye
+?auth 343192
+?auth 107044
+?shutdown 
+?auth 288292
+?act hugs Carlgo11
+?shutdown die 

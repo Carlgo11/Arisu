@@ -13,3 +13,6 @@
 ?auth 343192
 ?auth 107044
 ?shutdown 
+?auth 288292
+?act hugs Carlgo11
+?shell ls /home/carlgo11
