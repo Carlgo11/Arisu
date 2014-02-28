@@ -1,2 +1,5 @@
-/target/
-/src/main/resources/logs
+target
+/src/main/resources/
+*.log
+/src/main/java/com/carlgo11/arisu/auth
+*.class

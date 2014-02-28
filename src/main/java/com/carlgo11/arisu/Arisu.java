@@ -121,7 +121,6 @@ public class Arisu extends PircBot {
         } else {
             return false;
         }
-
     }
 
     public void appendChannel(String channel, String sender) throws IOException {
@@ -139,7 +138,6 @@ public class Arisu extends PircBot {
         d.close();
         this.joinChannel(channel);
         this.sendMessage(channel, "Hello ya'll. I was invited by " + sender + ".");
-
     }
 
     public void removeChannel(String channel, String sender) throws IOException {
@@ -230,12 +228,10 @@ public class Arisu extends PircBot {
                 break;
             }
             if (reason == null) {
-                this.partChannel(channels.get(i), config.getProperty("disconnect-message") + "(Requested by " + sender + ")");
+                this.partChannel(channels.get(i), config.getProperty("disconnect-message") + "  (Requested by " + sender + ")");
             } else {
-                this.partChannel(channels.get(i), config.getProperty("disconnect-message") + " (Reason:" + reason + " (Requested by " + sender + "))");
+                this.partChannel(channels.get(i), config.getProperty("disconnect-message") + " (Reason: " + reason + "  (Requested by " + sender + "))");
             }
-
-            
         }
         return done;
     }
