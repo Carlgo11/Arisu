@@ -1,5 +1,6 @@
 package com.carlgo11.arisu;
 
+import com.carlgo11.arisu.commands.Commands;
 import com.carlgo11.arisu.commands.ShutdownCommand;
 import com.carlgo11.arisu.commands.ActCommand;
 import com.carlgo11.arisu.commands.OpCommand;

@@ -1,4 +1,6 @@
-package com.carlgo11.arisu;
+package com.carlgo11.arisu.commands;
+
+import com.carlgo11.arisu.Arisu;
 
 public interface Commands {
 

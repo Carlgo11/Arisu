@@ -1,7 +1,6 @@
 package com.carlgo11.arisu.commands;
 
 import com.carlgo11.arisu.Arisu;
-import com.carlgo11.arisu.Commands;
 import com.carlgo11.arisu.auth.AuthAPI;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

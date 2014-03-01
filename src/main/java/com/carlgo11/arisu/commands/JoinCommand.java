@@ -6,7 +6,6 @@
 package com.carlgo11.arisu.commands;
 
 import com.carlgo11.arisu.Arisu;
-import com.carlgo11.arisu.Commands;
 import java.io.IOException;
 
 public class JoinCommand implements Commands {

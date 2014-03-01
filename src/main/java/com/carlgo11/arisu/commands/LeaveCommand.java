@@ -1,7 +1,6 @@
 package com.carlgo11.arisu.commands;
 
 import com.carlgo11.arisu.Arisu;
-import com.carlgo11.arisu.Commands;
 import org.jibble.pircbot.User;
 
 public class LeaveCommand implements Commands {
