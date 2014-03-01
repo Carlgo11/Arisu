@@ -1,17 +1,18 @@
-package com.carlgo11.arisu.internalcommands;
+package com.carlgo11.arisu.commands;
 
 import com.carlgo11.arisu.Arisu;
 import com.carlgo11.arisu.Commands;
 
-public class ModsCommand implements Commands {
+public class AdminsCommand implements Commands {
 
     @Override
     public String getCommandName() {
-        return "mods";
+        return "admins";
     }
 
     @Override
     public void handleMessage(Arisu bot, String channel, String sender, String msg, String[] args) {
-        bot.sendMessage(channel, "Mods: "+bot.mods.toString());
+        bot.sendMessage(channel, "Admins: "+bot.admins.toString());
     }
+
 }

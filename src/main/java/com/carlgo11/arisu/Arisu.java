@@ -1,6 +1,18 @@
 package com.carlgo11.arisu;
 
-import com.carlgo11.arisu.internalcommands.*;
+import com.carlgo11.arisu.commands.ShutdownCommand;
+import com.carlgo11.arisu.commands.ActCommand;
+import com.carlgo11.arisu.commands.OpCommand;
+import com.carlgo11.arisu.commands.JoinCommand;
+import com.carlgo11.arisu.commands.AuthCommand;
+import com.carlgo11.arisu.commands.BanCommand;
+import com.carlgo11.arisu.commands.InviteCommand;
+import com.carlgo11.arisu.commands.ModsCommand;
+import com.carlgo11.arisu.commands.SayCommand;
+import com.carlgo11.arisu.commands.ShellCommand;
+import com.carlgo11.arisu.commands.HelloCommand;
+import com.carlgo11.arisu.commands.LeaveCommand;
+import com.carlgo11.arisu.commands.AdminsCommand;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileWriter;

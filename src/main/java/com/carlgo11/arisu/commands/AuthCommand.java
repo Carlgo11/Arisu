@@ -1,4 +1,4 @@
-package com.carlgo11.arisu.internalcommands;
+package com.carlgo11.arisu.commands;
 
 import com.carlgo11.arisu.*;
 import com.carlgo11.arisu.auth.*;
