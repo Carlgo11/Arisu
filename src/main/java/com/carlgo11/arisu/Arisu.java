@@ -223,16 +223,10 @@ public class Arisu extends PircBot {
         d--;
         for (int i = 0; i <= channels.size(); i++) {
             boolean f = inChannel(channels.get(d));
-
             if (!f) {
-                System.out.println("in no channels.");
                 return true;
             } else {
                 try {
-                    System.out.println("is in" + channels.get(d));
-                    System.out.println("current channel" + channels.get(i));
-
-                    System.out.println("d: " + d + "\ti:" + i);
                     if (reason == null) {
                         this.partChannel(channels.get(i), config.getProperty("disconnect-message") + "  (Requested by " + sender + ")");
                     } else {
