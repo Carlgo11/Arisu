@@ -209,20 +209,20 @@ public class Arisu extends PircBot {
     }
 
     public boolean inChannel(String channel) {
+        boolean outp = false;
         for (int i = 0; i < channels.size(); i++) {
             if (channels.get(i).equalsIgnoreCase(channel)) {
-                return true;
-            } else {
-                return false;
+                outp=true;
             }
         }
-        return false;
+        return outp;
     }
 
     public boolean onPartAll(String sender, String reason) {
         boolean done = false;
         for (int i = 0; i <= channels.size(); i++) {
             int d = channels.size();
+            d--;
             if (!inChannel(channels.get(d))) {
                 done = true;
                 break;
