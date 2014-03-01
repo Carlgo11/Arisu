@@ -176,7 +176,6 @@ public class Arisu extends PircBot {
                     command.handleMessage(this, channel, sender, message.replace(command.getCommandName(), "").trim(), args);
                 }
             }
-
         }
 
     }
@@ -220,21 +219,31 @@ public class Arisu extends PircBot {
     }
 
     public boolean onPartAll(String sender, String reason) {
-        boolean done = false;
+        int d = channels.size();
+        d--;
         for (int i = 0; i <= channels.size(); i++) {
-            int d = channels.size();
-            d--;
-            if (!inChannel(channels.get(d))) {
-                done = true;
-                break;
-            }
-            if (reason == null) {
-                this.partChannel(channels.get(i), config.getProperty("disconnect-message") + "  (Requested by " + sender + ")");
+            boolean f = inChannel(channels.get(d));
+
+            if (!f) {
+                System.out.println("in no channels.");
+                return true;
             } else {
-                this.partChannel(channels.get(i), config.getProperty("disconnect-message") + " (Reason: " + reason + "  (Requested by " + sender + "))");
+                try {
+                    System.out.println("is in" + channels.get(d));
+                    System.out.println("current channel" + channels.get(i));
+
+                    System.out.println("d: " + d + "\ti:" + i);
+                    if (reason == null) {
+                        this.partChannel(channels.get(i), config.getProperty("disconnect-message") + "  (Requested by " + sender + ")");
+                    } else {
+                        this.partChannel(channels.get(i), config.getProperty("disconnect-message") + " (Reason: " + reason + "  (Requested by " + sender + "))");
+                    }
+                } catch (Exception ex) {
+                    return true;
+                }
             }
         }
-        return done;
+        return false;
     }
 
     public void onDisable(String sender, String reason) {

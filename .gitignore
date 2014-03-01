@@ -1,5 +1,6 @@
 target
-/src/main/resources/
+/src/main/resources
 *.log
 /src/main/java/com/carlgo11/arisu/auth
 *.class
+src/main/resources/channels.txt
