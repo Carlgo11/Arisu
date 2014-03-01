@@ -224,7 +224,7 @@ public class Arisu extends PircBot {
         boolean outp = false;
         for (int i = 0; i < channels.size(); i++) {
             if (channels.get(i).equalsIgnoreCase(channel)) {
-                outp=true;
+                outp = true;
             }
         }
         return outp;

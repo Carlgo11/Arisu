@@ -16,5 +16,4 @@ public class BanCommand implements Commands {
             bot.sendError(channel, bot.commandprefix + "ban <user> (reason)");
         }
     }
-
 }

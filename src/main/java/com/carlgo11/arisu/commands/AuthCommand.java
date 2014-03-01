@@ -30,8 +30,8 @@ public class AuthCommand implements Commands {
                 } catch (Exception ex) {
                     Logger.getLogger(AuthCommand.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            }else{
-                bot.sendError(sender, Colors.RED+"Already authorized.");
+            } else {
+                bot.sendError(sender, Colors.RED + "Already authorized.");
             }
         } else {
             bot.sendUsage(sender, "auth <code>");
