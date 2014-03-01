@@ -43,7 +43,7 @@ public class Arisu extends PircBot {
         cmds.add(new ModsCommand());
         cmds.add(new BanCommand());
         cmds.add(new HelloCommand());
-        cmds.add(new BanCommand());
+        //cmds.add(new BanCommand());
         cmds.add(new InviteCommand());
         cmds.add(new JoinCommand());
         cmds.add(new LeaveCommand());
