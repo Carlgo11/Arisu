@@ -21,7 +21,7 @@ public class AuthCommand implements Commands {
             long time = new Date().getTime() / 30000;
             if (!AuthAPI.isAuthed(sender)) {
                 try {
-                    if (Authorization.check_code(AuthSecret.secret, a, time)) {
+                    if (Authorization.check_code(a, time)) {
                         AuthAPI.addAuth(sender);
                         bot.sendMessage(sender, Colors.GREEN + "Authorized!");
                     } else {
