@@ -14,20 +14,19 @@ public class ShellCommand implements Commands {
 
     @Override
     public void handleMessage(Arisu bot, String channel, String sender, String msg, String[] args) {
-        if(AuthAPI.isAuthed(sender)){
+        if (AuthAPI.isAuthed(sender)) {
             StringBuilder al = new StringBuilder();
-            for(int i = 1; i < args.length; i++){
+            for (int i = 1; i < args.length; i++) {
                 al.append(args[i]);
                 al.append(" ");
             }
             shell(al.toString(), channel, bot);
-        }else{
+        } else {
             bot.needauth(sender);
         }
     }
-    
-    public void shell(String s, String channel, Arisu bot){
 
+    public void shell(String s, String channel, Arisu bot) {
         Process p;
         try {
             p = Runtime.getRuntime().exec(s);
@@ -43,8 +42,6 @@ public class ShellCommand implements Commands {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-            
     }
 
 }

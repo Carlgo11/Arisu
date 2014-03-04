@@ -4,7 +4,6 @@ public class Main {
     
     public static void main(String[] args) throws Exception {
     
-        // Now start our bot up.
         Arisu bot = new Arisu();
         int port = Integer.parseInt(bot.config.getProperty("server-port","6667"));
         bot.connect(bot.config.getProperty("server","moo.kamino.in"),port,bot.config.getProperty("server-pass",""));
@@ -15,10 +14,7 @@ public class Main {
             System.out.println("Joining " + bot.channels.get(i).toString());
         }
         // Enable debugging output.
-        bot.setVerbose(true);     
-        
-
-        
+        bot.setVerbose(true);       
     }
     
 }

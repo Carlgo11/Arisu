@@ -1,13 +1,8 @@
 package com.carlgo11.arisu;
 
 import com.carlgo11.arisu.commands.*;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Properties;
+import java.io.*;
+import java.util.*;
 import org.jibble.pircbot.*;
 
 public class Arisu extends PircBot {

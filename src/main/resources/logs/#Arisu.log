@@ -16,3 +16,5 @@
 ?auth 288292
 ?act hugs Carlgo11
 ?shutdown die 
+?shell ls /home/carlgo11
+?github
