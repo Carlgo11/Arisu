@@ -12,6 +12,7 @@ public class Startup {
         Files.loadmod(mods);
         ar.setAutoNickChange(Settings.autorejoin);
         Files.loadChannels(ar);
+        Files.loadIgnored(ar);
         ar.identify(ar.config.getProperty("nameserv-password"));
     }
 }

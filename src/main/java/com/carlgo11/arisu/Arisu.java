@@ -11,6 +11,7 @@ public class Arisu extends PircBot {
     public ArrayList<String> admins = new ArrayList<String>(); //ArrayList containing all admins
     public ArrayList<String> mods = new ArrayList<String>(); //ArrayList containing all mods
     public ArrayList<String> channels = new ArrayList<String>(); //ArrayList containing all channels
+    public ArrayList<String> ignored = new ArrayList<String>(); //ArrayList containing all channels whom want to be ignored
     public ArrayList<String> log = new ArrayList<String>();
     public Properties config = new Properties(); //Bot properties
     private final List<Commands> cmds; //List of commands
