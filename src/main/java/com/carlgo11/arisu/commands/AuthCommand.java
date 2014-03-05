@@ -31,10 +31,10 @@ public class AuthCommand implements Commands {
                     Logger.getLogger(AuthCommand.class.getName()).log(Level.SEVERE, null, ex);
                 }
             } else {
-                bot.sendError(sender, Colors.RED + "Already authorized.");
+                bot.sendError(channel, Colors.RED + "Already authorized.");
             }
         } else {
-            bot.sendUsage(sender, "auth <code>");
+            bot.sendUsage(channel, "auth <code>");
         }
 
     }

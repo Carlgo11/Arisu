@@ -14,7 +14,7 @@ public class ActCommand implements Commands {
     public void handleMessage(Arisu bot, String channel, String sender, String msg, String[] args) {
         if (bot.isAdmin(sender) || bot.isMod(sender)) {
             if (args.length == 1) {
-                bot.sendUsage(sender, "act <message>");
+                bot.sendUsage(channel, "act <message>");
             } else {
                 if (!args[1].startsWith("#")) {
                     StringBuilder outp = new StringBuilder();
@@ -38,7 +38,7 @@ public class ActCommand implements Commands {
                             sleep(10l);
                             bot.partChannel(args[1], "Act command requested by " + sender + ".");
                         } catch (InterruptedException ex) {
-                            bot.sendError(sender, ex.toString());
+                            bot.sendError(channel, ex.toString());
                         }
                     } else {
                         bot.sendAction(args[1], outp.toString());
@@ -46,7 +46,7 @@ public class ActCommand implements Commands {
                 }
             }
         } else {
-            bot.badperms(sender);
+            bot.badperms(channel);
         }
     }
 

@@ -25,13 +25,13 @@ public class OpCommand implements Commands {
                 if (bot.isOp(sender, args[1])) {
                     bot.op(args[1], args[2]);
                 } else {
-                    bot.badperms(sender);
+                    bot.badperms(channel);
                 }
             } else {
-                bot.sendUsage(sender, "op <channel> (user)");
+                bot.sendUsage(channel, "op <channel> (user)");
             }
         } else {
-            bot.sendUsage(sender, "op <channel> (user)");
+            bot.sendUsage(channel, "op <channel> (user)");
         }
 
     }

@@ -31,7 +31,7 @@ public class Arisu extends PircBot {
             System.out.println("Startup failed.\n" + ex);
             System.exit(0);
         }
-
+        
         cmds = new ArrayList<Commands>();
 
         cmds.add(new AdminsCommand());

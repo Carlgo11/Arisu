@@ -26,10 +26,10 @@ public class JoinCommand implements Commands {
                     bot.sendError(sender, ex.toString());
                 }
             } else {
-                bot.sendUsage(sender, "join <channel>");
+                bot.sendUsage(channel, "join <channel>");
             }
         } else {
-            bot.badperms(sender);
+            bot.badperms(channel);
         }
     }
 

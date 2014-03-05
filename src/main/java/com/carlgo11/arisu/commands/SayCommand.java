@@ -14,7 +14,7 @@ public class SayCommand implements Commands {
     public void handleMessage(Arisu bot, String channel, String sender, String msg, String[] args) {
         if (bot.isAdmin(sender) || bot.isMod(sender)) {
             if (args.length == 1) {
-                bot.sendUsage(sender, "say <message>");
+                bot.sendUsage(channel, "say <message>");
             } else {
                 if (!args[1].startsWith("#")) {
                     StringBuilder outp = new StringBuilder();
@@ -41,13 +41,13 @@ public class SayCommand implements Commands {
                             sleep(10l);
                             bot.partChannel(args[1], "Say command requested by "+sender+".");
                         } catch (InterruptedException ex) {
-                            bot.sendError(sender, ex.toString());
+                            bot.sendError(channel, ex.toString());
                         }
                     }
                 }
             }
         } else {
-            bot.badperms(sender);
+            bot.badperms(channel);
         }
     }
 
