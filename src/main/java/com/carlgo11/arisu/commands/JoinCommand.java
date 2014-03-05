@@ -19,11 +19,15 @@ public class JoinCommand implements Commands {
     public void handleMessage(Arisu bot, String channel, String sender, String msg, String[] args) {
         if (bot.isAdmin(sender) || bot.isMod(sender)) {
             if (args.length == 2) {
+                if(!bot.ignored.contains(args[1].toLowerCase())){
                 bot.sendMessage(channel, "Joining " + args[1] + "...");
                 try {
                     bot.appendChannel(args[1], sender);
                 } catch (IOException ex) {
                     bot.sendError(sender, ex.toString());
+                }
+                }else{
+                 bot.ignoredChannel(channel, args[1]);
                 }
             } else {
                 bot.sendUsage(channel, "join <channel>");

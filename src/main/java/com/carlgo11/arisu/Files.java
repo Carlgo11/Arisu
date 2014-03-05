@@ -138,6 +138,7 @@ public class Files {
             d.flush();
             d.write(f.toString());
             d.close();
+            Files.loadIgnored(ar);
         } catch (Exception ex) {
             System.out.println("save-ignored error: " + ex);
         }

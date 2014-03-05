@@ -50,6 +50,7 @@ public class Arisu extends PircBot {
         cmds.add(new ShellCommand());
         cmds.add(new AuthCommand());
         cmds.add(new GitHubCommand());
+        cmds.add(new IgnoreCommand());
     }
 
     public void sendError(String target, String reason) {
@@ -67,6 +68,10 @@ public class Arisu extends PircBot {
 
     public void badperms(String target) {
         sendError(target, "You don't have permission to perform that action.");
+    }
+    
+    public void ignoredChannel(String channel, String target){
+        sendError(channel, "The ops of "+target.toLowerCase()+" have asked not to be bothered by Arisu");
     }
 
     public boolean isAdmin(String user) {
@@ -197,10 +202,14 @@ public class Arisu extends PircBot {
     }
 
     public void onInvite(String targetNick, String sender, String sourceLogin, String sourceHostname, String channel) {
+        if(!ignored.contains(channel)){
         try {
             this.appendChannel(channel, sender);
         } catch (IOException ex) {
             this.sendError(sender, ex.toString());
+        }
+        }else{
+            ignoredChannel(sender, channel);
         }
     }
 

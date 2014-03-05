@@ -22,4 +22,14 @@
 ?auth 748637
 ?auth 124212
 ?auth 059024
-?shutdown test
+?ignore #carl
+?auth
+?auth asd
+?auth 123
+?ignore #Arisu
+?ignore #arisu
+?ignore ###arisu
+?ignore ####arisu
+?ignore #carl1
+?join ###arisu
+?join ####arisu

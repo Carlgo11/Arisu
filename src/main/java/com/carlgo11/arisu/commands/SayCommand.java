@@ -24,25 +24,29 @@ public class SayCommand implements Commands {
                     }
                     bot.sendMessage(channel, outp.toString());
                 } else {
-                    boolean inchnl = true;
-                    if (!bot.inChannel(args[1])) {
-                        bot.joinChannel(args[1]);
-                        inchnl = false;
-                    }
-                    StringBuilder outp = new StringBuilder();
-                    for (int i = 2; i < args.length; i++) {
-                        outp.append(args[i]);
-                        outp.append(" ");
-                    }
-
-                    bot.sendMessage(args[1], outp.toString());
-                    if (!inchnl) {
-                        try {
-                            sleep(10l);
-                            bot.partChannel(args[1], "Say command requested by "+sender+".");
-                        } catch (InterruptedException ex) {
-                            bot.sendError(channel, ex.toString());
+                    if (!bot.ignored.contains(args[1].toLowerCase())) {
+                        boolean inchnl = true;
+                        if (!bot.inChannel(args[1])) {
+                            bot.joinChannel(args[1]);
+                            inchnl = false;
                         }
+                        StringBuilder outp = new StringBuilder();
+                        for (int i = 2; i < args.length; i++) {
+                            outp.append(args[i]);
+                            outp.append(" ");
+                        }
+
+                        bot.sendMessage(args[1], outp.toString());
+                        if (!inchnl) {
+                            try {
+                                sleep(10l);
+                                bot.partChannel(args[1], "Say command requested by " + sender + ".");
+                            } catch (InterruptedException ex) {
+                                bot.sendError(channel, ex.toString());
+                            }
+                        }
+                    } else {
+                        bot.ignoredChannel(channel, args[1]);
                     }
                 }
             }

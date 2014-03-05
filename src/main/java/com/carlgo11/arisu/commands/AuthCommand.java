@@ -25,7 +25,7 @@ public class AuthCommand implements Commands {
                         AuthAPI.addAuth(sender);
                         bot.sendMessage(sender, Colors.GREEN + "Authorized!");
                     } else {
-                        bot.sendMessage(sender, Colors.RED + "Invailid! Try again...");
+                        bot.sendError(channel, Colors.RED + "Invailid! Try again...");
                     }
                 } catch (Exception ex) {
                     Logger.getLogger(AuthCommand.class.getName()).log(Level.SEVERE, null, ex);

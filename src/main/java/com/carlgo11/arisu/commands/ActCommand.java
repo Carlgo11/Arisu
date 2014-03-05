@@ -24,24 +24,28 @@ public class ActCommand implements Commands {
                     }
                     bot.sendAction(channel, outp.toString());
                 } else {
-                    StringBuilder outp = new StringBuilder();
-                    for (int i = 2; i < args.length; i++) {
-                        outp.append(args[i]);
-                        outp.append(" ");
-                    }
-                    if (!bot.inChannel(args[1])) {
-                        bot.joinChannel(args[1]);
+                    if (!bot.ignored.contains(args[1].toLowerCase())) {
+                        StringBuilder outp = new StringBuilder();
+                        for (int i = 2; i < args.length; i++) {
+                            outp.append(args[i]);
+                            outp.append(" ");
+                        }
+                        if (!bot.inChannel(args[1])) {
+                            bot.joinChannel(args[1]);
 
-                        bot.sendAction(args[1], outp.toString());
+                            bot.sendAction(args[1], outp.toString());
 
-                        try {
-                            sleep(10l);
-                            bot.partChannel(args[1], "Act command requested by " + sender + ".");
-                        } catch (InterruptedException ex) {
-                            bot.sendError(channel, ex.toString());
+                            try {
+                                sleep(10l);
+                                bot.partChannel(args[1], "Act command requested by " + sender + ".");
+                            } catch (InterruptedException ex) {
+                                bot.sendError(channel, ex.toString());
+                            }
+                        } else {
+                            bot.sendAction(args[1], outp.toString());
                         }
                     } else {
-                        bot.sendAction(args[1], outp.toString());
+                        bot.ignoredChannel(channel, args[1]);
                     }
                 }
             }
