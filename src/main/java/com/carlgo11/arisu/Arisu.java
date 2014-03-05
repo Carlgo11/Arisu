@@ -167,7 +167,7 @@ public class Arisu extends PircBot {
         } else if (msg.startsWith(commandprefix)) {
             for (Commands command : cmds) {
                 if (message.startsWith(command.getCommandName())) {
-                    Startup.savelog(this, channel, sender, msg);
+                    Files.savelog(this, channel, sender, msg);
                     command.handleMessage(this, channel, sender, message.replace(command.getCommandName(), "").trim(), args);
                 }
             }
