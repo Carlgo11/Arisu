@@ -7,13 +7,13 @@ import org.jibble.pircbot.*;
 
 public class Arisu extends PircBot {
 
-    public String commandprefix = "?"; //Prefix of all commands
     public ArrayList<String> admins = new ArrayList<String>(); //ArrayList containing all admins
     public ArrayList<String> mods = new ArrayList<String>(); //ArrayList containing all mods
     public ArrayList<String> channels = new ArrayList<String>(); //ArrayList containing all channels
     public ArrayList<String> ignored = new ArrayList<String>(); //ArrayList containing all channels whom want to be ignored
     public ArrayList<String> log = new ArrayList<String>();
     public Properties config = new Properties(); //Bot properties
+    public String commandprefix = "?"; //Prefix of all commands
     private final List<Commands> cmds; //List of commands
 
     public Arisu() {
@@ -162,7 +162,7 @@ public class Arisu extends PircBot {
         String[] args = msg.split(" ");
         String cleancmd = args[0];
         String message = msg.replace(commandprefix, "").toLowerCase();
-        if (msg.startsWith("?help")) {
+        if (cleancmd.startsWith("?help")) {
             StringBuilder cmdlist = new StringBuilder();
             for (Commands command : cmds) {
                 cmdlist.append("?");
@@ -170,9 +170,9 @@ public class Arisu extends PircBot {
                 cmdlist.append(", ");
             }
             this.sendMessage(channel, "Commands: " + cmdlist.toString());
-        } else if (msg.startsWith(commandprefix)) {
+        } else if (cleancmd.startsWith(commandprefix)) {
             for (Commands command : cmds) {
-                if (message.startsWith(command.getCommandName())) {
+                if (cleancmd.startsWith(command.getCommandName())) {
                     Files.savelog(this, channel, sender, msg);
                     command.handleMessage(this, channel, sender, message.replace(command.getCommandName(), "").trim(), args);
                 }
