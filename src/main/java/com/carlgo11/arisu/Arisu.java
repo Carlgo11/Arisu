@@ -66,24 +66,24 @@ public class Arisu extends PircBot {
         sendError(target, "Usage: " + commandprefix + usage);
     }
 
-    public void badperms(String target) {
-        sendError(target, "You don't have permission to perform that action.");
+    public void badperms(String sender) {
+        sendError(sender, "You don't have permission to perform that action.");
     }
     
     public void ignoredChannel(String channel, String target){
         sendError(channel, "The ops of "+target.toLowerCase()+" have asked not to be bothered by Arisu");
     }
 
-    public boolean isAdmin(String user) {
-        if (admins.contains(user)) {
+    public boolean isAdmin(String sender) {
+        if (admins.contains(sender)) {
             return true;
         } else {
             return false;
         }
     }
 
-    public boolean isMod(String user) {
-        if (mods.contains(user)) {
+    public boolean isMod(String sender) {
+        if (mods.contains(sender)) {
             return true;
         } else {
             return false;
@@ -109,11 +109,11 @@ public class Arisu extends PircBot {
         }
     }
 
-    public boolean isVoice(String user, String channel) {
+    public boolean isVoice(String sender, String channel) {
         User users[] = getUsers(channel);
         User u = null;
         for (User usa : users) {
-            if (user.equals(usa.getNick())) {
+            if (sender.equals(usa.getNick())) {
                 u = usa;
                 break;
             }
