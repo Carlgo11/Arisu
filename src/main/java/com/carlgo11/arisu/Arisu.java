@@ -32,7 +32,7 @@ public class Arisu extends PircBot {
             System.out.println("Startup failed.\n" + ex);
             System.exit(0);
         }
-        
+
         cmds = new ArrayList<Commands>();
 
         cmds.add(new AdminsCommand());
@@ -51,6 +51,7 @@ public class Arisu extends PircBot {
         cmds.add(new AuthCommand());
         cmds.add(new GitHubCommand());
         cmds.add(new IgnoreCommand());
+        cmds.add(new UnIgnoreCommand());
     }
 
     public void sendError(String target, String reason) {
@@ -69,9 +70,9 @@ public class Arisu extends PircBot {
     public void badperms(String sender) {
         sendError(sender, "You don't have permission to perform that action.");
     }
-    
-    public void ignoredChannel(String channel, String target){
-        sendError(channel, "The ops of "+target.toLowerCase()+" have asked not to be bothered by Arisu");
+
+    public void ignoredChannel(String channel, String target) {
+        sendError(channel, "The ops of " + target.toLowerCase() + " have asked not to be bothered by Arisu");
     }
 
     public boolean isAdmin(String sender) {
@@ -172,13 +173,12 @@ public class Arisu extends PircBot {
             this.sendMessage(channel, "Commands: " + cmdlist.toString());
         } else if (cleancmd.startsWith(commandprefix)) {
             for (Commands command : cmds) {
-                if (cleancmd.startsWith(command.getCommandName())) {
+                if (cleancmd.startsWith(commandprefix + command.getCommandName())) {
                     Files.savelog(this, channel, sender, msg);
                     command.handleMessage(this, channel, sender, message.replace(command.getCommandName(), "").trim(), args);
                 }
             }
         }
-
     }
 
     public void onPrivateMessage(String sender, String login, String hostname, String msg) {
@@ -202,13 +202,13 @@ public class Arisu extends PircBot {
     }
 
     public void onInvite(String targetNick, String sender, String sourceLogin, String sourceHostname, String channel) {
-        if(!ignored.contains(channel)){
-        try {
-            this.appendChannel(channel, sender);
-        } catch (IOException ex) {
-            this.sendError(sender, ex.toString());
-        }
-        }else{
+        if (!ignored.contains(channel)) {
+            try {
+                this.appendChannel(channel, sender);
+            } catch (IOException ex) {
+                this.sendError(sender, ex.toString());
+            }
+        } else {
             ignoredChannel(sender, channel);
         }
     }

@@ -124,7 +124,7 @@ public class Files {
         System.out.println("loaded ignored.txt");
         System.out.println("Ignored: " + ar.ignored.toString());
     }
-    public static void saveIgnored(Arisu ar, String channel){
+    public static void saveIgnored(Arisu ar){
         try {
             File file = new File("ignored.txt");
             FileWriter d = new FileWriter(file);
@@ -133,8 +133,6 @@ public class Files {
                 f.append(ar.ignored.get(i).toString());
                 f.append("\n");
             }
-            f.append(channel);
-            f.append("\n");
             d.flush();
             d.write(f.toString());
             d.close();

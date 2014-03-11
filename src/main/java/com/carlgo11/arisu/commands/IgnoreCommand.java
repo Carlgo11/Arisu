@@ -14,7 +14,8 @@ public class IgnoreCommand implements Commands {
             try{
             if (bot.isMod(sender) || bot.isAdmin(sender) || bot.isOp(sender, args[1].toLowerCase())) {
                 if (!bot.ignored.contains(args[1].toLowerCase())) {
-                    Files.saveIgnored(bot, args[1].toLowerCase());
+                    bot.ignored.add(args[1].toLowerCase());
+                    Files.saveIgnored(bot);
                     bot.sendMessage(channel, args[1].toLowerCase() + " is now ignored. You may kick the bot or ask a moderator to remove her.");
                     if(bot.inChannel(args[1].toLowerCase())){
                         bot.partChannel(args[1].toLowerCase(), "Channel ignored by "+sender+".");
