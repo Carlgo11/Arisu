@@ -3,7 +3,7 @@ package com.carlgo11.arisu.commands;
 import com.carlgo11.arisu.Arisu;
 import com.carlgo11.arisu.Files;
 
-public class UnIgnoreCommand implements Commands{
+public class UnIgnoreCommand implements Commands {
 
     public String getCommandName() {
         return "unignore";
@@ -13,8 +13,8 @@ public class UnIgnoreCommand implements Commands{
         if (args.length == 2) {
             if (bot.isMod(sender) || bot.isAdmin(sender)) {
                 if (bot.ignored.contains(args[1].toLowerCase())) {
-                    for(int i = 0; i < bot.ignored.size(); i++){
-                        if(bot.ignored.get(i).equalsIgnoreCase(args[1].toLowerCase())){
+                    for (int i = 0; i < bot.ignored.size(); i++) {
+                        if (bot.ignored.get(i).equalsIgnoreCase(args[1].toLowerCase())) {
                             bot.ignored.remove(i);
                         }
                     }

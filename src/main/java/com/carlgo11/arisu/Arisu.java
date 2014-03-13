@@ -222,6 +222,13 @@ public class Arisu extends PircBot {
         }
         return outp;
     }
+    
+    @Override
+    protected void onJoin(String channel, String sender, String login, String hostname) {
+        if(sender != getNick()){
+            
+        }
+    }
 
     public boolean onPartAll(String sender, String reason) {
         int d = channels.size();
