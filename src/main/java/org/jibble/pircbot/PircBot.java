@@ -198,6 +198,8 @@ public abstract class PircBot implements ReplyConstants {
                 }
                 else if (code.equals("439")) {
                     // No action required.
+                }else if(code.equals("422")){
+                    break;
                 }
                 else if (code.startsWith("5") || code.startsWith("4")) {
                     socket.close();

@@ -52,6 +52,7 @@ public class Arisu extends PircBot {
         cmds.add(new GitHubCommand());
         cmds.add(new IgnoreCommand());
         cmds.add(new UnIgnoreCommand());
+        cmds.add(new YamlCommand());
     }
 
     public void sendError(String target, String reason) {
@@ -253,13 +254,13 @@ public class Arisu extends PircBot {
     }
 
     public void onDisable(String sender, String reason) {
-        while (1 != 0) {
-            boolean partlyParted = onPartAll(sender, reason);
-            if (partlyParted) {
+        //while (1 != 0) {
+            //boolean partlyParted = onPartAll(sender, reason);
+            //if (partlyParted) {
                 System.out.println("=============\tBot disabled by " + sender + "\t=============");
                 this.disconnect();
                 System.exit(0);
-            }
-        }
+          //  }
+        //}
     }
 }
