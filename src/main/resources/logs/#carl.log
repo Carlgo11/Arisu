@@ -9,4 +9,34 @@
 ?shutdown test
 ?auth 405254
 ?auth 404254
-?shutdown test
+?shutdown k bye
+?auth 343192
+?auth 107044
+?shutdown 
+?auth 288292
+?act hugs Carlgo11
+?shell ls /home/carlgo11
+?auth 903334
+?auth 652963
+?auth 067074
+?auth 748637
+?auth 124212
+?auth 059024
+?ignore #carl
+?auth
+?auth asd
+?auth 123
+?ignore #Arisu
+?ignore #arisu
+?ignore ###arisu
+?ignore ####arisu
+?ignore #carl1
+?join ###arisu
+?join ####arisu
+?say hi
+?yaml
+?yaml http://pastebin.com/AfRdPCcG
+?yaml AfRdPCcG
+?yaml pastebin.com/AfRdPCcG
+?yaml www.pastebin.com/AfRdPCcG
+?yaml www.pastebin.com/AfRdPCcG

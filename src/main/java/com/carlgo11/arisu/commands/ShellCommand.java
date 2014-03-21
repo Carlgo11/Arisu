@@ -22,7 +22,7 @@ public class ShellCommand implements Commands {
             }
             shell(al.toString(), channel, bot);
         } else {
-            bot.needauth(channel);
+            bot.needauth(sender);
         }
     }
 

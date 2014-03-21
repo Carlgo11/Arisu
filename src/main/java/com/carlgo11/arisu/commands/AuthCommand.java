@@ -25,16 +25,16 @@ public class AuthCommand implements Commands {
                         AuthAPI.addAuth(sender);
                         bot.sendMessage(sender, Colors.GREEN + "Authorized!");
                     } else {
-                        bot.sendError(channel, Colors.RED + "Invailid! Try again...");
+                        bot.sendError(sender, Colors.RED + "Invailid! Try again...");
                     }
                 } catch (Exception ex) {
                     Logger.getLogger(AuthCommand.class.getName()).log(Level.SEVERE, null, ex);
                 }
             } else {
-                bot.sendError(channel, Colors.RED + "Already authorized.");
+                bot.sendError(sender, Colors.RED + "Already authorized.");
             }
         } else {
-            bot.sendUsage(channel, "auth <code>");
+            bot.sendUsage(sender, "auth <code>");
         }
 
     }

@@ -21,13 +21,13 @@ public class UnIgnoreCommand implements Commands {
                     Files.saveIgnored(bot);
                     bot.sendMessage(channel, args[1].toLowerCase() + " is no longer ignored. You may now invite me to your channel if you wish. :)");
                 } else {
-                    bot.sendError(channel, "The channel " + args[1].toLowerCase() + " is not listed as ignored.");
+                    bot.sendError(sender, "The channel " + args[1].toLowerCase() + " is not listed as ignored.");
                 }
             } else {
-                bot.sendError(channel, "Since I'm not in that channel I can't see if you're a op or not. Please ask an mod/admin to unignore that channel.");
+                bot.sendError(sender, "Since I'm not in that channel I can't see if you're a op or not. Please ask an mod/admin to unignore that channel.");
             }
         } else {
-            bot.sendUsage(channel, "unignore <channel>");
+            bot.sendUsage(sender, "unignore <channel>");
         }
     }
 

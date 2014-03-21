@@ -20,10 +20,10 @@ public class BanCommand implements Commands {
                         bot.ban(channel, args[1].toString() + "!*@*");
                     }
                 } else {
-                    bot.badperms(channel);
+                    bot.badperms(sender);
                 }
             } else {
-                bot.sendUsage(channel, "ban (channel) <user>");
+                bot.sendUsage(sender, "ban (channel) <user>");
             }
         } else if (args.length == 3) {
             if (channel.startsWith("#")) {
@@ -34,13 +34,13 @@ public class BanCommand implements Commands {
                         bot.ban(channel, args[2].toString() + "!*@*");
                     }
                 } else {
-                    bot.badperms(channel);
+                    bot.badperms(sender);
                 }
             } else {
-                bot.sendUsage(channel, "ban (channel) <user>");
+                bot.sendUsage(sender, "ban (channel) <user>");
             }
         } else {
-            bot.sendUsage(channel, "ban (channel) <user>");
+            bot.sendUsage(sender, "ban (channel) <user>");
         }
 
     }

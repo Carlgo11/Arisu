@@ -18,10 +18,10 @@ public class ShutdownCommand implements Commands{
             }else if(args.length > 1){
                  bot.onDisable(sender,msg);
             }else{
-                    bot.sendUsage(channel, "shutdown (reason)");
+                    bot.sendUsage(sender, "shutdown (reason)");
                     }
                 } else {
-                    bot.needauth(channel);
+                    bot.needauth(sender);
                 }
     }
     

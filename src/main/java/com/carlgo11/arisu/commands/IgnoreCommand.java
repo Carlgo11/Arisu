@@ -21,16 +21,16 @@ public class IgnoreCommand implements Commands {
                         bot.partChannel(args[1].toLowerCase(), "Channel ignored by "+sender+".");
                     }
                 } else {
-                    bot.sendError(channel, "The channel " + args[1].toLowerCase() + " is already ignored.");
+                    bot.sendError(sender, "The channel " + args[1].toLowerCase() + " is already ignored.");
                 }
             } else {
-                bot.sendError(channel, "You are not a channel operator in that channel. Ask an op to do this for you.");
+                bot.sendError(sender, "You are not a channel operator in that channel. Ask an op to do this for you.");
             }
             }catch(NullPointerException ex){
-                bot.sendError(channel, "I'm not in that channel. Please ask an moderator or admin to do this or temporarily invite me to that channel.");
+                bot.sendError(sender, "I'm not in that channel. Please ask an moderator or admin to do this or temporarily invite me to that channel.");
             }
         } else {
-            bot.sendUsage(channel, "ignore <channel>");
+            bot.sendUsage(sender, "ignore <channel>");
         }
 
     }

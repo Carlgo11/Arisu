@@ -24,7 +24,7 @@ public class LeaveCommand implements Commands {
             if (bot.isAdmin(sender) || bot.isMod(sender) || u.isOp()) {
                 bot.partChannel(channel, "Leaving... (Requested by " + sender + ")");
             } else {
-                bot.badperms(channel);
+                bot.badperms(sender);
             }
         } else if (args.length == 2) {
             if (bot.isAdmin(sender) || bot.isMod(sender)) {
@@ -33,16 +33,16 @@ public class LeaveCommand implements Commands {
                     try {
                         bot.removeChannel(args[1].toString(), sender);
                     } catch (Exception ex) {
-                        bot.sendError(channel, ex.toString());
+                        bot.sendError(sender, ex.toString());
                     }
                 } else {
-                    bot.sendError(channel, "I'm not in that channel. Did you misspell the name maybe?");
+                    bot.sendError(sender, "I'm not in that channel. Did you misspell the name maybe?");
                 }
             } else {
-                bot.badperms(channel);
+                bot.badperms(sender);
             }
         } else {
-            bot.sendUsage(channel, "leave (channel)");
+            bot.sendUsage(sender, "leave (channel)");
         }
 
     }

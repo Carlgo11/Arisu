@@ -56,7 +56,7 @@ public class Arisu extends PircBot {
     }
 
     public void sendError(String target, String reason) {
-        this.sendMessage(target, Colors.RED + "[Error] " + Colors.NORMAL + reason);
+        this.sendNotice(target, Colors.RED + "[Error] " + Colors.NORMAL + reason);
     }
 
     public void needauth(String user) {
@@ -72,8 +72,8 @@ public class Arisu extends PircBot {
         sendError(sender, "You don't have permission to perform that action.");
     }
 
-    public void ignoredChannel(String channel, String target) {
-        sendError(channel, "The ops of " + target.toLowerCase() + " have asked not to be bothered by Arisu");
+    public void ignoredChannel(String sender, String target) {
+        sendError(sender, "The ops of " + target.toLowerCase() + " have asked not to be bothered by Arisu");
     }
 
     public boolean isAdmin(String sender) {
